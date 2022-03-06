@@ -35,5 +35,27 @@ class Test_BaseModel(unittest.TestCase):
         b2 = BaseModel()
 
         self.assertNotEqual(b1.id, b2.id)
+    
+    def BaseModel_instance_has_created_at(self):
+        """
+        test if instance created_at us created and initialized
+        """
+        b = BaseModel()
+        self.assertTrue(hasattr(b, "created_at"))
+
+    def test_if_created_at_is_datetime(self):
+        """
+        test if created_at is an instance of datetime
+        """
+        b = BaseModel()
+        self.assertTrue(type(b.created_at), datetime)
+
+    def test_str__(self):
+        """
+        test str output
+        """
+        b = BaseModel()
+        self.assertEqual(b.__str__(), "[{}] ({}) {}".format(type(b).__name__, b.id,  b.__dict__))
+
 
         
