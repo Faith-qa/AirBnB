@@ -38,8 +38,11 @@ class BaseModel:
 
 
     def __str__(self):
-        print(self.id)
-        return("[{}] ({}) {}".format(type(self).__name__, self.id,  self.__dict__))
+        """
+        return the string representation of basemodel object
+        """
+        
+        return "[{}] ({}) {}".format(type(self).__name__, self.id,  self.__dict__)
 
     def save(self):
         """
