@@ -30,7 +30,7 @@ class BaseModel:
                 if key != "__class__":
                     if key in ('created_at', 'updated_at'):
                         setattr(self, key,
-                                datetime.datetime.fromisoformat(value))
+                                datetime.fromisoformat(value))
                     else:
                         setattr(self, key, value)
     
@@ -49,7 +49,9 @@ class BaseModel:
         updates updated_at with current date time
 
         """
-        self.updated_at = datetime.now()
+
+        self.updated_at = datetime.utcnow()
+        
 
     def to_dict(self):
         """
@@ -60,7 +62,7 @@ class BaseModel:
         the object
 
         """
-        dict_1 = self.__dict__
+        dict_1 = self.__dict__.copy()
         print(dict_1)
         dict_1["__class__"] = self.__class__.__name__
         for k, v in self.__dict__.items():
